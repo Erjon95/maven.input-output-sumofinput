@@ -4,7 +4,8 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class InputEvaluator {
-    private int sum, number;
+    private int number;
+    private int sum;
     private boolean exc;
 
     public InputEvaluator(){exc = true; sum = 0;}
@@ -46,11 +47,10 @@ public class InputEvaluator {
         }
     }
 
-    private int calculateSumOfInput()
+    private void calculateSumOfInput()
     {
-        for (int i = getNumber(); i >=0; i--)
+        for (int i = getNumber(); i > 0; i--)
             setSum(getSum() + i);
-        return getSum();
     }
 
     protected void run() {
@@ -60,7 +60,9 @@ public class InputEvaluator {
         System.out.println("Please, enter an integer");
 
         readInputFromUser(scanner);
-        System.out.println("The cumulative sum of " + number + " is " + calculateSumOfInput());
+        scanner.close();
+        calculateSumOfInput();
+        System.out.println("The cumulative sum of " + getNumber() + " is " + getSum());
     }
 }
 
